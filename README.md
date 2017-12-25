@@ -14,7 +14,8 @@ import multiplayer.sql
 database name: multiplayer
 
 run Background command
-php /var/www/html/multiplayer/gameCreator
+php /var/www/html/multiplayer/gameCreator.php
+
 
 Open Browser
 localhost/multiplayer
