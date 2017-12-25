@@ -22,4 +22,5 @@ CREATE TABLE `player_group` (
   PRIMARY KEY (`player_group_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
 
-
+INSERT INTO groups (group_name) VALUES ('HIT ME GAME');
+INSERT INTO groups (group_name) VALUES ('HIT ME GAME RETURN'); 
