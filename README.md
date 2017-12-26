@@ -18,8 +18,9 @@ php /var/www/html/multiplayer/gameCreator.php
 
 
 Open Browser
-localhost/multiplayer
+http://localhost/multiplayer
 
-
+Open leaderboard
+http://localhost/multiplayer/leaderboard.php
 
 
