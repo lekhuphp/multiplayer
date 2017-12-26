@@ -54,7 +54,7 @@ function joinGroup($groupId, $playerId, $playerName) {
     $query = "INSERT INTO player_group (group_id, player_id, player_name) VALUES ('".$groupId."', '".$playerId."', '".$playerName."')";
     mysqli_query($connection, $query);    
 }
-
+//maintain hits
 function maintainHitCount($playerGroupId) {
     global $connection;
     $query = "UPDATE player_group SET hit_count = hit_count+1 WHERE player_group_id = ".$playerGroupId;
@@ -62,6 +62,30 @@ function maintainHitCount($playerGroupId) {
     mysqli_query($connection, $query);    
 }
 
+//getMonthlyTopPlayers
+function getMonthlyTopPlayers($limit) {
+    global $connection;
+    $query = "SELECT max(hit_count) points, player_name FROM player_group WHERE MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE()) GROUP BY player_id ORDER BY max(hit_count) DESC LIMIT ".$limit;
+    $result = mysqli_query($connection, $query);  
+    $finalResult = array();  
+    while ($res = mysqli_fetch_assoc($result)) {
+        $finalResult[] = $res;
+    }
+   return $finalResult;
+}
+
+//getWeeklyTopPlayers
+function getWeeklyTopPlayers($limit) {
+    global $connection;
+    $lastMonday = date('Y-m-d',strtotime('last monday'));
+    $query = "SELECT max(hit_count) points, player_name FROM player_group WHERE date(created_at) >= '".$lastMonday."' GROUP BY player_id ORDER BY max(hit_count) DESC LIMIT ".$limit;
+    $result = mysqli_query($connection, $query);  
+    $finalResult = array();  
+    while ($res = mysqli_fetch_assoc($result)) {
+        $finalResult[] = $res;
+    }
+   return $finalResult;
+}
 
 
 

@@ -143,7 +143,7 @@ $('#_start_hit').click(function() {
 require('config/connection.php');
 require_once('function/functions.php');
 $groupDetails = getAllGroups();
-echo "<h2>Join Groups</h2><div class='row'>";
+echo "<h2>Join Groups</h2><div><a href='leaderboard.php'>View Leaderboard</a></div><div class='row'>";
 if($groupDetails) {
     foreach($groupDetails as $groupDetail) {
         echo "<form><div class='column'>
